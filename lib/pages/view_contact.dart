@@ -33,7 +33,7 @@ class ContactDetailsState extends State<ContactDetails> {
         onPressed: () async {
           await ContactsService.deleteContact(widget.contact.info);
           widget.onContactDelete(widget.contact);
-          if (!context.mounted) return;
+          // ignore: use_build_context_synchronously
           Navigator.of(context).pop();
         },
       );

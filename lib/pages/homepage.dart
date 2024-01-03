@@ -43,8 +43,9 @@ class _HomepageState extends State<Homepage> {
   getAllContacts() async {
     List colors = [Colors.green, Colors.indigo, Colors.yellow, Colors.orange];
     int colorIndex = 0;
-    List<AppContact> contacts_ =
-        (await ContactsService.getContacts()).map((contact) {
+    List<AppContact> contacts_ = (await ContactsService.getContacts(
+            withThumbnails: false, photoHighResolution: false))
+        .map((contact) {
       Color baseColor = colors[colorIndex];
       colorIndex++;
       if (colorIndex == colors.length) {
@@ -150,11 +151,11 @@ class _HomepageState extends State<Homepage> {
                 listItemsExist == true
                     ? // if we have contacts to show
                     ContactsList(
+                        contacts:
+                            isSearching == true ? contactsFiltered : contacts,
                         reloadContacts: () {
                           getAllContacts();
                         },
-                        contacts:
-                            isSearching == true ? contactsFiltered : contacts,
                       )
                     : Container(
                         padding: const EdgeInsets.only(top: 40),

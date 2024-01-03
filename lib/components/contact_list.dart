@@ -6,8 +6,8 @@ import 'package:uzacontact/utils/app_uzacontact.dart';
 // ignore: must_be_immutable
 class ContactsList extends StatelessWidget {
   final List<AppContact> contacts;
-  Function() reloadContacts;
-  ContactsList(
+  final Function() reloadContacts;
+  const ContactsList(
       {super.key, required this.contacts, required this.reloadContacts});
   @override
   Widget build(BuildContext context) {
